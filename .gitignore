@@ -4,3 +4,6 @@
 *.anc
 *.LOG
 *.CWR
+*.dsp
+CAD/PerformanceLog.txt
+CAD/X.BAT
