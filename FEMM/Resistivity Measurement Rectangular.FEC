@@ -1,0 +1,57 @@
+[Format]      =  1
+[Precision]   =  1e-008
+[Frequency]   =  0
+[MinAngle]    =  30
+[Depth]       =  0.5
+[LengthUnits] =  inches
+[ProblemType] =  planar
+[Coordinates] =  cartesian
+[Comment]     =  "Add comments here."
+[PointProps]   = 0
+[BdryProps]   = 0
+[BlockProps]  = 1
+  <BeginBlock>
+    <BlockName> = "Seawater"
+    <ox> = 4.7999999999999998
+    <oy> = 4.7999999999999998
+    <ex> = 1
+    <ey> = 1
+    <ltx> = 0
+    <lty> = 0
+  <EndBlock>
+[ConductorProps]  = 2
+  <BeginConductor>
+    <ConductorName> = "Ground"
+    <vcr> = 0
+    <vci> = 0
+    <qcr> = 0
+    <qci> = 0
+    <ConductorType> = 1
+  <EndConductor>
+  <BeginConductor>
+    <ConductorName> = "VCC"
+    <vcr> = 12
+    <vci> = 0
+    <qcr> = 0
+    <qci> = 0
+    <ConductorType> = 1
+  <EndConductor>
+[NumPoints] = 7
+-0.25	12	0	0	0
+0.25	12	0	0	0
+0	0	0	0	0
+0.25	0	0	0	0
+-0.25	0	0	0	0
+-0.25	-12	0	0	0
+0.25	-12	0	0	0
+[NumSegments] = 6
+0	4	-1	0	0	0	0
+4	5	-1	0	0	0	0
+5	6	-1	0	0	0	1
+6	3	-1	0	0	0	0
+3	1	-1	0	0	0	0
+1	0	-1	0	0	0	2
+[NumArcSegments] = 0
+[NumHoles] = 0
+[NumBlockLabels] = 1
+-0.10000000000000001	9.5999999999999996	1	0.050000000000000003	0	0
