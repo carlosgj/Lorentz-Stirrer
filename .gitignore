@@ -7,3 +7,5 @@
 *.dsp
 CAD/PerformanceLog.txt
 CAD/X.BAT
+*.aux
+*.synctex.gz
