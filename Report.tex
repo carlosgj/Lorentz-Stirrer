@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{amsmath}
+\usepackage{xfrac}
 %opening
 \title{Magnetohydrodynamic Cocktail Stirrer}
 \author{Carlos Gross Jones}
@@ -16,7 +17,7 @@
 \end{abstract}
 \newpage
 \section{Background}
-\par The first attempt at a contactless cocktail was based on a simple application of the Lorentz force. Two copper electrodes placed in a glass tumbler passed a current through the liquid, while a strong magnet (a 2''x1''x3/4'' N45 block from United Nuclear Scientific LLC) under the tumbler provided an orthogonal magnetic field (Fig. \ref{fig:oldversion}). 
+\par The first attempt at a contactless cocktail stirrer was based on a simple application of the Lorentz force. Two copper electrodes placed in a glass tumbler passed a current through the liquid, while a strong magnet (a 2''x1''x\sfrac{3}{4}'' N45 block from United Nuclear Scientific LLC) under the tumbler provided an orthogonal magnetic field (Fig. \ref{fig:oldversion}). 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{Oldversion}
@@ -42,7 +43,7 @@ Given an electrode area of $A$ and spacing of $L$ and approximating both the cur
 \begin{align}
 \vec{F}=\lvert\vec{B}\rvert L\iiint\limits_A\lvert\vec{J}\rvert\mathrm{d}A=\lvert\vec{B}\rvert IL
 \end{align}
-\par This design did work in principle; the Lorentz force produced a pumping action, where fluid would flow down the centerline between the electrodes and recirculate along the walls of the tumbler. However, since a large current was flowing through a fluid, significant electrolysis occurred, which, in addition to producing potentially dangerous hydrogen and oxygen gas, affected the taste of the cocktail due to the electrolysis products of ethanol.
+\par This design did work in principle; the Lorentz force produced a pumping action, where fluid would flow down the centerline between the electrodes and recirculate along the walls of the tumbler. However, since a large current was flowing through a fluid, significant electrolysis occurred, which, in addition to producing potentially dangerous hydrogen and oxygen gas, affected the taste of the cocktail due to the electrolysis products.
 
 \section{Theoretical Background}
 \par Since the basic application of Lorentz force to pumping was effectively validated (and is in fact well studied \cite{yamato}), the major problem remaining was the electrolysis of the cocktail. As per Faraday's Law of Electrolysis:
@@ -66,10 +67,31 @@ Where:
 	\item The fluid will be considered to have electrical resistivity $\rho$ and magnetic properties equal to a vacuum (water is in fact weakly diamagnetic, but this is expected to be a negligible contribution);
 \end{itemize}
 
-\par Since, at this point, the goal is to find the form of the current field and its dependence on $B_{s,max}$ and $\rho$, it is not necessary to accurately know the resistivity of an actual cocktail; those values are calculated later in \S\ref{sec:resistivity}.
+\par Since, at this point, the goal is to find the form of the current field and its dependence on $B_{s,max}$ and $\rho$, it is not necessary to accurately know the resistivity of an actual cocktail; those values are calculated separately.
 
+\par In fact, this application is an adaption of the well-studied eddy current brake (Fig. \ref{fig:eddy_current_brake}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Eddy_current_brake_diagram}
+	\caption{Eddy current disk brake}
+	\label{fig:eddy_current_brake}
+\end{figure}
+In this case, however, the magnets are made to spin, resulting in ``dragging'' of the cylinder. Specifically, if a magnetic field passing through a conductive cylinder radially is made to rotate about the cylinder's axis, currents will be produced in the cylinder, which interact with the field via Lorentz force. Since the strength of the eddy currents, and by extension the resulting force, is proportional to $\frac{\mathrm{d}B}{\mathrm{d}t}$, both the strength of the applied magnetic field and its rate of change should be maximized. 
 \subsection{General Design}
-\par Therefore, large permanent magnets were next considered. 3'' dia. x 1'' thick NdFeB45 magnets from United Nuclear Scientific LLC were chosen based on field strength per dollar (\$140 and maximum $\vec{B}\cdot\vec{n}$ of $\approx$0.42 T).
+\par The obvious way to produce a strong time-variant magnetic field is with an AC solenoid: they are well characterized and fairly easy to control, and of course relatively easy to build. Unfortunately, to produce the high field strengths needed (on the order of 1 T), the power required for a normal solenoid exceeds the capabilities of household circuits. Due to the expense and safety issues, a superconducting solenoid was not practical. Therefore, large permanent magnets were considered. 3'' dia. x 1'' thick NdFeB45 magnets from United Nuclear Scientific LLC were chosen based on field strength per dollar (\$140 and maximum $\vec{B}\cdot\vec{n}$ of $\approx$0.42 T). In order to produce the greatest possible magnetic field, four of these magnets are arranged in a quadrupole configuration. In addition, high-permeability material (in this case, 1020 steel) is used to provide return paths for the field, further increasing the intensity inside the assembly (Fig. \ref{fig:field_in_cup}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{FieldInCup}
+	\caption{Quadrupole magnet assembly with steel shunts}
+	\label{fig:field_in_cup}
+\end{figure}
+\par The downside of permanent magnets, of course, is that they must be in motion to produce a time-variant field. In this case, the quadrupole assembly must be spun about the axis of the cocktail, producing circular forces on the liquid (Fig. \ref{fig:volume_force_density}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{VolumeForceDensityStill}
+	\caption{Volume force density caused by counterclockwise spinning quadrupole}
+	\label{fig:volume_force_density}
+\end{figure}
 
 \section{Rotor Design}
 
